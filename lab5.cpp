@@ -40,7 +40,7 @@ int fortune(int a, int b){
 }
 
 int main(){
-    bool done false;
+    bool done = false;
 
     while(!done){
         cout <<"Enter a number between 1-4. What is your fav" <<
@@ -52,6 +52,6 @@ int main(){
         int choice_two = input();
 
         cout << "You have selected " << choice << " and " << choice_two << endl;
-        cout << "Your fortune is: " << fortune(choice, choice_two);
+        cout << "Your fortune is: " << fortune(choice, choice_two) << endl;
     }
 }
