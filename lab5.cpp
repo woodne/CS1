@@ -21,7 +21,11 @@ int input(){
 
 //function to take values entered by user and return a fortune based on input
 void fortune(int a, int b){
-    //values can range from 2 to 8
+    /*
+      perhaps add values together and have a series of if-statements to determine
+      the fortune
+      values can range from 2 to 8
+    */
     int c = a + b;
 
     if (c <= 4){
@@ -33,15 +37,11 @@ void fortune(int a, int b){
     else if (c > 6 && c <= 8){
         cout << "You will be rich and successful today." << endl;
     }
-
-    //perhaps add values together and have a series of if-statements to determine
-      //the fortune
-
 }
 
 int main(){
     bool done = false;
-
+    int sentinal = 1;
     while(!done){
         cout <<"Enter a number between 1-4. What is your fav" <<
             "orite supply to construct a spawning pool?" << endl;
@@ -54,5 +54,12 @@ int main(){
         cout << "You have selected " << choice << " and " << choice_two << endl;
         cout << "Your fortune is: " << endl;
         fortune(choice, choice_two);
+
+        cout << "\nDo you want to play again? Press 0 to exit." << endl;
+        cin >> sentinal;
+        if(sentinal == 0){
+            done = true;
+        }
+
     }
 }
