@@ -20,7 +20,7 @@ int input(){
 }
 
 //function to take values entered by user and return a fortune based on input
-int fortune(){
+int fortune(int a, int b){
 
     //perhaps add values together and have a series of if-statements to determine
       //the fortune
@@ -28,9 +28,13 @@ int fortune(){
 }
 
 int main(){
-	cout <<"Enter a number between 1-4. What is your fav" <<
+    cout <<"Enter a number between 1-4. What is your fav" <<
         "orite supply to construct a spawning pool?" << endl;
     cout << "-Excluding your initial 5 workers" << endl;
 	int choice = input();
-    cout <<"Enter a number between 1-4. "
+    cout <<"Enter a number between 1-4. Add more here later. ";
+    int choice_two = input();
+
+    cout << "You have selected " << choice << " and " << choice_two << endl;
+    cout << "Your fortune is: " << fortune(choice, choice_two);
 }
