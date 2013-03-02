@@ -20,7 +20,7 @@ int input(){
 }
 
 //function to take values entered by user and return a fortune based on input
-int fortune(int a, int b){
+void fortune(int a, int b){
     //values can range from 2 to 8
     int c = a + b;
 
@@ -52,6 +52,7 @@ int main(){
         int choice_two = input();
 
         cout << "You have selected " << choice << " and " << choice_two << endl;
-        cout << "Your fortune is: " << fortune(choice, choice_two) << endl;
+        cout << "Your fortune is: " << endl;
+        fortune(choice, choice_two);
     }
 }
