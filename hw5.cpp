@@ -7,18 +7,8 @@
   Change 1, 2,  complete
 */
 
-#include <iostream>
-#include <string>
 #include "epet.h"
 
-using namespace std;
-// Constructor, creates a new pet with starting values.
-pet::pet(){
-  hunger = 50;
-  happy = 50;
-  cout << "Pet's name? (One word)";
-  cin >> name;
-}
 //member function for playing with pet
 void pet::play(){
   int choice = 0;
@@ -29,26 +19,31 @@ void pet::play(){
     case(1):
       happy += 10;
       hunger += 1;
-      cout << "\nYour pet caught the ball! Yay!\n"
+      hygiene += -2;
+      cout << "\nYour pet caught the ball! Yay!\n";
       break;
     case(2):
       happy += 5;
       hunger += 1;
+      hygiene += -2;
       cout << "\nYour pet rolls over.\n";
       break;
     case(3):
       happy += 5;
       hunger += 2;
+      hygiene += -2;
       cout << "\nYour pet begins to dance!!! Amazing!\n";
       break;
     case(4):
       happy += 2;
       hunger += 1;
+      hygiene += -2;
       cout << "\nRARGGLGLLRBARKRKKCLUCKCLUCK\n";
       break;
-    case(4):
+    case(5):
       happy += -25;
       hunger += 30;
+      hygiene += -10;
       cout << "\nBARKBARKWOOFMEOWSCRATCHCLAW! Your pet attacked another creature!\n";
       break;
     default:
@@ -64,21 +59,25 @@ void pet::feed(){
     case(1):
       happy += 5;
       hunger += -5;
+      hygiene += -2;
       cout << "\nYour creature eats the biscuit.\n";
       break;
     case(2):
       happy += 5;
       hunger += -10;
+      hygiene += -5;
       cout << "\nYour creature ate a rat! Gross!!\n";
       break;
     case (3):
       happy += 10;
       hunger += -20;
+      hygiene += -3;
       cout << "\nYour creature ate a Raccoon! Poor furry creature. :(\n";
       break;
     case (4):
       happy += 50;
       hunger += -25;
+      hygiene += -10;
       cout << "\nYour creature ate Chipotle! You both will regret it later.\n";
       break;
     default:
@@ -91,6 +90,7 @@ void pet::print(){
   cout << "\nYour pet " << name << " is " << endl;
   cout << "Happy: " << happy << endl;
   cout << "Hungry: " << hunger << endl;
+  cout << "Hygiene: " << hygiene << endl << endl;;
 }
 //member function check health
 int pet::check_health(){
@@ -102,7 +102,17 @@ int pet::check_health(){
     cout << "\nYour pet has died of a broken heart.\n";
     return 1;
   }
+  if(hygiene <= 0){
+    cout << "\nYour pet died from disease.\n";
+    return 1;
+  }
   return 0;
+}
+void pet::clean(){
+  cout << "Your pet enjoys the water! All clean!" << endl;
+  happy += 10;
+  hunger += -5;
+  hygiene = 100;
 }
 
 int main(){
@@ -112,7 +122,7 @@ int main(){
   do{
     pet1.print();
     cout << "What would you like to do with your pet?\n";
-    cout << " Play (1) \n Feed (2) \n Exit (0) \n";
+    cout << " Play (1) \n Feed (2) \n Clean (3) \n Exit (0) \n";
     cin >> choice;
 
     switch(choice){
@@ -123,6 +133,9 @@ int main(){
         break;
       case 2:
         pet1.feed();
+        break;
+      case 3:
+        pet1.clean();
         break;
       default:
         cout << "Not a valid choice." << endl;
