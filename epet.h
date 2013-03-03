@@ -1,3 +1,12 @@
+/*
+  Josh Hartshorn
+  CS120 Homework 5 and 6
+  March 3rd 2013
+
+  Pet Assignment - Classes, Strings, and Files
+*/
+
+
 #include <iostream>
 #include <string>
 
