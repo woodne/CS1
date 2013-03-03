@@ -55,6 +55,7 @@ void pet::feed(){
   int choice = 0;
   cout << "What should we eat?\n";
   cout << " Biscuits (1) \n Rat (2) \n Raccoon (3) \n Chipotle (4) \n";
+  cin >> choice;
   switch(choice){
     case(1):
       happy += 5;
