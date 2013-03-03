@@ -35,20 +35,21 @@ pet::pet(){
 void pet::play(){
   int choice = 0;
   cout << "What should we play?\n";
-  cout << " Fetch (1) \n Roll over \n";
+  cout << " Fetch (1) \n Roll over (2) \n";
   cin >> choice;
   switch(choice){
-  case(1):
-    happy += 10;
-    hunger += 1;
-    break;
-  case(2):
-    happy += 5;
-    hunger += 1;
-    break;
-  default:
+    case(1):
+      happy += 10;
+      hunger += 1;
+      break;
+    case(2):
+      happy += 5;
+      hunger += 1;
+      break;
+    default:
     cout << "Not a valid choice." << endl;
   }
+}
 //member function for feeding
 void pet::feed(){
   cout << "\nMMMM, Yummy!\n";
@@ -91,7 +92,7 @@ int main(){
     break;
   }
   health_check = pet1.check_health();
-  }while(choice != && health_check != 1);
+  }while(choice != 0 && health_check != 1);
   cin.ignore();
   cout << "Press enter to exit." << endl;
   cin.ignore();
