@@ -11,40 +11,40 @@ using namespace std;
 //rectangle class with (width and height) members - both doubles
 
 class Rectangle{
-    private:
-      double width, height;
-    public:
-      //constructor
-      Rectangle() {
-          double width = 0;
-          double height = 0;
-      }
-      //member methods
-      void set_height(double);
-      void set_width(double);
-      double get_area(){return (width * height);}
-      double get_perimeter(){return (width*2)+(height*2);}
-      void get_dimensions();
+  private:
+    double width, height;
+  public:
+    //constructor
+    Rectangle() {
+      double width = 0;
+      double height = 0;
+    }
+    //member methods
+    void set_height(double);
+    void set_width(double);
+    double get_area(){return (width * height);}
+    double get_perimeter(){return (width*2)+(height*2);}
+    void get_dimensions();
 };
 void Rectangle::set_height(double x){
-    if(x >= 0){
-        height = x;
-    }
-    else{
-        height = 0;
-    }
+  if(x >= 0){
+    height = x;
+  }
+  else{
+    height = 0;
+  }
 }
 void Rectangle::set_width(double x){
-    if(x >= 0){
-        width = x;
-    }
-    else{
-        width = 0;
-    }
+  if(x >= 0){
+      width = x;
+  }
+  else{
+    width = 0;
+  }
 }
 void Rectangle::get_dimensions(){
-    cout << "Height: " << height << endl;
-    cout << "Width: " << width << endl;
+  cout << "Height: " << height << endl;
+  cout << "Width: " << width << endl;
 }
 
 int main(){
