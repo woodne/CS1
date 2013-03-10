@@ -10,6 +10,7 @@
 
 // Constructor, creates a new pet with starting values.
 pet::pet(){
+  srand (time(NULL));
   int choice;
   cout << "Would you like to create(1) a new pet or load(2) an old one?" << endl;
   cin >> choice;
@@ -57,33 +58,33 @@ void pet::play(){
   cin >> choice;
   switch(choice){
     case(1):
-      happy += 10;
-      hunger += 1;
-      hygiene += -2;
+      happy += rand()%10+1;
+      hunger += rand()%5+1;
+      hygiene += rand()%-2;
       cout << "\nYour pet caught the ball! Yay!\n";
       break;
     case(2):
-      happy += 5;
+      happy += rand()%5+1;
       hunger += 1;
       hygiene += -2;
       cout << "\nYour pet rolls over.\n";
       break;
     case(3):
-      happy += 5;
-      hunger += 2;
+      happy += rand()%5+1;
+      hunger += rand()%10+1;
       hygiene += -2;
       cout << "\nYour pet begins to dance!!! Amazing!\n";
       break;
     case(4):
-      happy += 2;
+      happy += rand()%5+1;
       hunger += 1;
       hygiene += -2;
       cout << "\nRARGGLGLLRBARKRKKCLUCKCLUCK\n";
       break;
     case(5):
-      happy += -25;
-      hunger += 30;
-      hygiene += -10;
+      happy += rand()%-25;
+      hunger += rand()%30+1;
+      hygiene += rand()%30;
       cout << "\nBARKBARKWOOFMEOWSCRATCHCLAW! Your pet attacked another creature!\n";
       break;
     default:
@@ -98,27 +99,27 @@ void pet::feed(){
   cin >> choice;
   switch(choice){
     case(1):
-      happy += 5;
-      hunger += -5;
+      happy += rand()%5+1;
+      hunger += rand()%-5;
       hygiene += -2;
       cout << "\nYour creature eats the biscuit.\n";
       break;
     case(2):
-      happy += 5;
-      hunger += -10;
-      hygiene += -5;
+      happy += rand()%5+1;
+      hunger += rand()%-10;
+      hygiene += rand()%-5;
       cout << "\nYour creature ate a rat! Gross!!\n";
       break;
     case (3):
-      happy += 10;
-      hunger += -20;
-      hygiene += -3;
+      happy += rand()%10+1;
+      hunger += rand()%-20;
+      hygiene += rand()%-3;
       cout << "\nYour creature ate a Raccoon! Poor furry creature. :(\n";
       break;
     case (4):
-      happy += 50;
-      hunger += -25;
-      hygiene += -10;
+      happy += rand()%50+1;
+      hunger += rand()%-25;
+      hygiene += rand()%-10;
       cout << "\nYour creature ate Chipotle! You both will regret it later.\n";
       break;
     default:

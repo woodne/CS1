@@ -10,8 +10,13 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <time.h>
+#include <stdio.h> 
+#include <stdlib.h>
 
 using namespace std;
+
+
 //declaration of the pet class
 class pet{
   private:
