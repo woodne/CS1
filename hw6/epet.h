@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include <string>
+#include <fstream>
 
 using namespace std;
 //declaration of the pet class
@@ -25,12 +26,6 @@ class pet{
     void print();
     void clean();
     int check_health();
+    void save_game();
+    void load_game();
 };
-// Constructor, creates a new pet with starting values.
-pet::pet(){
-  hunger = 50;
-  happy = 50;
-  hygiene = 10; //0 is dirty?
-  cout << "Pet's name? (One word)";
-  cin >> name;
-}

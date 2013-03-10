@@ -3,10 +3,51 @@
   CS120 Homework 6
   March 3rd 2013
 
-  Pet Assignment - Classes, Strings, and Files
+  Pet Assignment - Saving Data to Files - loading data from files.
 */
 
 #include "epet.h"
+
+// Constructor, creates a new pet with starting values.
+pet::pet(){
+  int choice;
+  cout << "Would you like to create(1) a new pet or load(2) an old one?" << endl;
+  cin >> choice;
+  if (choice == 1){
+    hunger = 50;
+    happy = 50;
+    hygiene = 10; //0 is dirty?
+    cout << "Pet's name? (One word)";
+    cin >> name;
+  }
+  else if(choice == 2){
+    cout << "Enter the filename" << endl;
+    string filename;
+    cin >> filename;
+    ifstream load;
+    load.open (filename.c_str());
+    int line = 0;
+    while(line < 5) {
+      line++;
+      cout << line << endl;
+      if (line == 1){
+        load >> name;
+      }
+      if (line == 2){
+        load >> hunger;
+      }
+      if (line == 3){
+        load >> happy;
+      }
+      if (line == 4){
+        load >> hygiene;
+      }
+    }
+  }
+  else{ 
+    cout << "invalid input" << endl;
+  }
+}
 
 //member function for playing with pet
 void pet::play(){
@@ -114,6 +155,18 @@ void pet::clean(){
   hunger += -5;
   hygiene = 100;
 }
+void pet::save_game(){
+  cout << "Please enter a filename" << endl;
+  string filename;
+  cin >> filename;
+  ofstream save;
+  save.open (filename.c_str());
+  save << name << endl;
+  save << happy << endl;
+  save << hunger << endl;
+  save << hygiene << endl;
+  save.close();
+}
 
 int main(){
   pet pet1;
@@ -142,6 +195,7 @@ int main(){
   }
   health_check = pet1.check_health();
   }while(choice != 0 && health_check != 1);
+  pet1.save_game();
   cin.ignore();
   cout << "Press enter to exit." << endl;
   cin.ignore();
