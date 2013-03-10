@@ -27,5 +27,4 @@ class pet{
     void clean();
     int check_health();
     void save_game();
-    void load_game();
 };
