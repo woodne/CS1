@@ -32,4 +32,7 @@ class pet{
     void clean();
     int check_health();
     void save_game();
+    void random_events(); 
+    //I should really have just made accessor functions
+    //to modify variables from outside the class.
 };

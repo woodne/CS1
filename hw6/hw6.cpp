@@ -4,6 +4,14 @@
   March 3rd 2013
 
   Pet Assignment - Saving Data to Files - loading data from files.
+
+  I finished the saving and loading of characters - though there are things I
+  did not get the time to test. I will get to those after I am caught up.
+
+  03/14/2013
+  I still need to implement random events, but many of the rewards and
+  penalties are randomized. I didn't put much thought into if my changes
+  made sense.
 */
 
 #include "epet.h"
@@ -156,6 +164,29 @@ void pet::clean(){
   hunger += -5;
   hygiene = 100;
 }
+void pet::random_events(){
+  int random = rand()%5;
+  switch(random){
+    case 0:
+      happy -= 10;
+      hunger += 10;
+      cout << "Random Event: Your pet has a tummy ache. :(" <<
+            " \n-10 Happiness, +10 Hunger" << endl;
+      break;
+    case 1:
+      happy += 20;
+      hygiene -= 10;
+      cout << "Random Event: Your pet thought of a funny joke and " <<
+            "accidently fell over. \n+20 happiness, -10 hygiene" << endl;
+      break;
+    case 2:
+      break; 
+    case 3:
+      break;
+    case 4:
+      break;
+  }
+}
 void pet::save_game(){
   cout << "Please enter a filename" << endl;
   string filename;
@@ -193,6 +224,9 @@ int main(){
         break;
       default:
         cout << "Not a valid choice." << endl;
+  }
+  if (choice != 0){
+    pet1.random_events();
   }
   health_check = pet1.check_health();
   }while(choice != 0 && health_check != 1);
