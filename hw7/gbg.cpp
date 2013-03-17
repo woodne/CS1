@@ -1,3 +1,11 @@
+/*  Josh Hartshorn
+    CS 120, Homework 7
+    March 13th, 2013
+
+    Generic Board Game Assignment
+    Game instructions completed. Changed board length and range of rolls
+*/
+
 #include "hw7.h"
 
 // Function Prototypes
