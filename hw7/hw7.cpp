@@ -3,6 +3,7 @@
     March 13th, 2013
 
     Generic Board Game Assignment
+    Game instructions completed. Changed board length and range of rolls
 */
 
 #include<iostream>
@@ -11,7 +12,7 @@
 #include<ctime>
 #include<cstdlib>
 using namespace std;
-// Class Prototype
+// Class Prototype -- this will probably need to be moved to a header
 class square{
   private:
     int move;
@@ -28,10 +29,17 @@ void print_board(square[], int ,int);
 void read_board(square[]);
 void check_position(int &); //pass by reference
 // Global variables
-const int board_length = 20;
+const int board_length = 30;
 
 
 int main(){
+//output command explaining how the game works
+  cout << "The goal of this game is to reach the last square" <<
+        " before the other player. The gameplay is simple - as" <<
+        " you only have to hit enter on your turn to roll" <<
+        ". This roll will determine where you land on the board." << endl;
+  cout << "You may land on a special square which modifies your position " <<
+        "on the board." << endl;
   int current_player = 1, roll;
   int player1_position = 0, player2_position = 0;
   square the_board[board_length];
@@ -43,7 +51,7 @@ int main(){
   do{
     cout << "\n\n\n\n\nPlayer " << current_player << " type enter to roll.\n";
     cin.ignore();
-    roll = 1 + (rand() % 5);
+    roll = -1 + (rand() % 6);
     cout << "Player " << current_player << " rolled a " << roll << ".\n";
     if(current_player == 1){
       player1_position += roll;
