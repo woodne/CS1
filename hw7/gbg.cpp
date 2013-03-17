@@ -1,36 +1,11 @@
-/*  Josh Hartshorn
-    CS 120, Homework 7
-    March 13th, 2013
+#include "hw7.h"
 
-    Generic Board Game Assignment
-    Game instructions completed. Changed board length and range of rolls
-*/
-
-#include<iostream>
-#include<string>
-#include<fstream>
-#include<ctime>
-#include<cstdlib>
-using namespace std;
-// Class Prototype -- this will probably need to be moved to a header
-class square{
-  private:
-    int move;
-    string message;
-    char symbol;
-  public:
-    square();
-    void print();
-    int action();
-    void set(int,char,string);
-};
 // Function Prototypes
 void print_board(square[], int ,int);
 void read_board(square[]);
 void check_position(int &); //pass by reference
 // Global variables
 const int board_length = 30;
-
 
 int main(){
 //output command explaining how the game works
