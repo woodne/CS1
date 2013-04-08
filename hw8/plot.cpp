@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include "plot.h"
-#include <iomanip>
+#include "string"
 
 using namespace std;
 
@@ -80,9 +80,30 @@ void Plot::print_elevation_map(){
     }
   }
 }
-void Plot::print_square(){
-
+void Plot::print_square(int a, int b){
+  cout << "\nRow:" << a << " Column: " << b << " Elevation\n";
+  cout << grid[a][b].get_elevation() << endl;
+  cout << "\nRow:" << a << " Column: " << b << " Ground Cover\n";
+  cout << grid[a][b].get_groundcover() << endl;  
 }
-void Plot::edit_square(){
-
+void Plot::edit_square(int a, int b){
+  cout << "\nRow:" << a << " Column: " << b << " Elevation\n";
+  cout << "\nCurrent values - Elevation: " << grid[a][b].get_elevation()
+    << " Ground Cover: " << grid[a][b].get_groundcover() << endl;
+  string choice;
+  bool sentinal = false;
+  cout << "Do you really want to edit this square? (Type \"yes\"" << endl;
+  cin >> choice;
+  if (choice == "yes"){
+    cout << "\nChange the elevation now:";
+    double e; char gc;
+    cin >> e;
+    cout << "\nNow change the groundcover:";
+    cin >> gc;
+    grid[a][b].set(e, gc);
+    cout << "Elevation: " << grid[a][b].get_elevation() << endl;
+    cout << "Ground Cover: " << grid[a][b].get_groundcover() << endl;
+  }
+  else{
+  }
 }
