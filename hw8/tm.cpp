@@ -18,7 +18,10 @@ int main() {
   p.print_terrain_map();
   cout << "\nElevation:\n";
   p.print_elevation_map();
-
+  cout << "\n Minimum! \n";
+  p.minimum();
+  cout << "\n Maximum! \n";
+  p.maximum();
   int a, b;
 
   cout << "Do you want to view a squares attributes? Enter the coordinates!\n";

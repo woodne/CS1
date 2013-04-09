@@ -7,9 +7,33 @@
 #include <fstream>
 #include "plot.h"
 #include "string"
+#include <algorithm>
 
 using namespace std;
 
+//global
+void Plot::minimum(){
+  double minimum = grid[0][0].get_elevation();
+  for (int i=0;i<10;i++) {
+    for (int j=0; j<10; j++) {
+      if (grid[i][j].get_elevation() < minimum){
+        minimum = grid[i][j].get_elevation();
+      }
+    }
+  }
+  cout << minimum << endl;
+}
+void Plot::maximum(){
+  double maximum = grid[0][0].get_elevation();
+  for (int i=0;i<10;i++) {
+    for (int j=0; j<10; j++) {
+      if (grid[i][j].get_elevation() > maximum){
+        maximum = grid[i][j].get_elevation();
+      }
+    }
+  }
+  cout << maximum << endl;
+}
 void Plot::loadplot(string filename){
   ifstream datafile;
   datafile.open(filename.c_str());
