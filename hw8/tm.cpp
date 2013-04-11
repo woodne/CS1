@@ -24,15 +24,17 @@ int main() {
   p.maximum();
   int a, b;
 
-  cout << "Do you want to view a squares attributes? Enter the coordinates!\n";
-  cin >> a >> b;
-  p.print_square(a,b);
 
-  cout << "Do you want to change a squares attributes? Enter the coordinates!\n";
-  cin >> a >> b;
-  p.edit_square(a,b);
 
-  //user must print individual square height (like grid 2-2)
+  //cout << "Do you want to view a squares attributes? Enter the coordinates!\n";
+  //cin >> a >> b;
+  //p.print_square(a,b);
+
+  //cout << "Do you want to change a squares attributes? Enter the coordinates!\n";
+  //cin >> a >> b;
+  //p.edit_square(a,b);
+
+  //user must print individual square elevation (like grid 2-2)
   //user needs to print 10x10 grid of elevations
   //user needs to print 10x10 grid of terrain (GBT)
   //user needs to request the minimum and maximum elevation

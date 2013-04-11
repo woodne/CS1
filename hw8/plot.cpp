@@ -64,9 +64,20 @@ void Plot::transpose()
      }
    }
 }
-//only grass is passible - since its hard to walk through trees and bushes
+
+int Plot::passable(){
+
+}
 int Plot::passableEW()
 {
+//only grass is passable, so only need to check for 'G'
+int check[10];
+for(int i=0;i<10;i++){
+  if (grid[i][0].get_groundcover() == 'G'){
+      check[i] = 1;
+  }
+  cout << check[i] << endl;
+}
 
 }
 int Plot::passableNS(){
