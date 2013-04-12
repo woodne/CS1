@@ -28,6 +28,6 @@ class Plot {
     void minimum(); // lowest elevation in plot of land
     void maximum(); // highest elevation in plot of land
     void steepest(); // largest dfiferent in elevation for adjacent square meters
-    void passable(); // not sure
+    int passable(); // not sure
 
 };

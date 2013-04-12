@@ -22,6 +22,9 @@ int main() {
   p.minimum();
   cout << "\n Maximum! \n";
   p.maximum();
+  cout << endl;
+  int f = p.passable();
+  cout << endl << f << endl;
   int a, b;
 
 

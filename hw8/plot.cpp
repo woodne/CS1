@@ -66,22 +66,55 @@ void Plot::transpose()
 }
 
 int Plot::passable(){
-
+  return passableEW() && passableNS();
 }
 int Plot::passableEW()
 {
 //only grass is passable, so only need to check for 'G'
-int check[10];
-for(int i=0;i<10;i++){
-  if (grid[i][0].get_groundcover() == 'G'){
-      check[i] = 1;
+int depth = 0; //reached end
+int line = 0; //line number
+int found = 0;
+int depth_check = 0;
+int line_check = 0;
+//check for passable terrain on edge
+for(line=0;line<10;line++){
+  line_check++;
+  cout << "Line: " << line << endl;
+  if (grid[line][0].get_groundcover() == 'G'){
+    found=0;
+    depth_check=0;
+    for(depth = 0; depth < 10; depth++){
+      if (grid[line][depth].get_groundcover()== 'G'){
+        found++;
+	depth_check++;
+        cout << " Line: " << line << " Depth: " << depth_check << " Found Grass: " << found << endl;
+      }
+      else{
+	cout << "\nSomething blocks our path!!" << endl;
+        break;
+      }
+    }
+    if (found >= 10){
+      cout << "\n We have a row!!" << endl;
+      return true;
+    }
+    if (depth_check >= 9){
+      cout << "\n We do not have a row!" << endl;
+      return false;
+    }
   }
-  cout << check[i] << endl;
+}
+  if (line_check >= 9){
+    return false;
+  }
 }
 
-}
 int Plot::passableNS(){
-
+//top to bottom
+  transpose();
+  int reverse = passableEW();
+  transpose();
+  return reverse;
 }
 void Plot::save(string name){
 //save to file
