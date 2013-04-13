@@ -8,6 +8,7 @@
 #include "plot.h"
 #include "string"
 #include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -148,6 +149,7 @@ void Plot::print_terrain_map(){
     for (int j=0; j<10; j++) {
       track++;
       cout << grid[i][j].get_groundcover();
+      cout << " ";
       if (track==10){
         cout << endl;
         track = 0;
@@ -160,7 +162,8 @@ void Plot::print_elevation_map(){
   for (int i=0;i<10;i++) {
     for (int j=0; j<10; j++) {
       track++;
-      cout << grid[i][j].get_elevation();
+      cout << setprecision(2) << setw(2) << grid[i][j].get_elevation();
+      cout << " ";
       if (track==10){
         cout << endl;
         track = 0;
