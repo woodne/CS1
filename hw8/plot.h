@@ -19,12 +19,11 @@ class Plot {
   public:
     //assignment defines things that need to be accessible from userspace - so look there!
     void save(string name);
-    void load(string name);
+    void load(string filename);
     void print_terrain_map();
     void print_elevation_map();
     void print_square(int a, int b);
     void edit_square(int a, int b);
-    void loadplot(string);
     void minimum(); // lowest elevation in plot of land
     void maximum(); // highest elevation in plot of land
     int steepest(int a, int b); // largest dfiferent in elevation for adjacent square meters

@@ -55,7 +55,7 @@ void Plot::maximum(){
   }
   cout << maximum << endl;
 }
-void Plot::loadplot(string filename){
+void Plot::load(string filename){
   ifstream datafile;
   datafile.open(filename.c_str());
   char data [101];
@@ -156,9 +156,6 @@ void Plot::save(string name){
      }
   }
   
-}
-void Plot::load(string name){
-//load from file
 }
 void Plot::print_terrain_map(){
   int track = 0;

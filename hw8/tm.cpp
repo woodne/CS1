@@ -1,6 +1,8 @@
 /* Josh Hartshorn
    CS120 Homework 8
    Terrain Manager Project
+
+   TODO: Make a menu and clean up output. Also, check diagonals in passable()
 */
 
 //save and load files
@@ -13,7 +15,7 @@ int main() {
   //create plot object
   Plot p;
   string s = "turnip.dat";
-  p.loadplot(s);
+  p.load(s);
   cout << "\nTerrain:\n";
   p.print_terrain_map();
   cout << "\nElevation:\n";
@@ -29,6 +31,7 @@ int main() {
 
   int steepest = p.steepest(2,1);
   cout << "Steepest: " << steepest << endl;
+  p.save("test");
 
 
   //cout << "Do you want to view a squares attributes? Enter the coordinates!\n";
