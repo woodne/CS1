@@ -138,7 +138,24 @@ int Plot::passableNS(){
   return reverse;
 }
 void Plot::save(string name){
-//save to file
+  int counter=0;
+  ofstream datafile;
+  datafile.open(name.c_str());
+  datafile << name << endl;
+  for(int i =0; i<10;i++){
+     for (int j = 0; j < 10; j++){
+       datafile << setprecision(2) << setiosflags(ios::showpoint) << grid[i][j].get_elevation();
+       datafile << ",";
+       datafile << setprecision(2) << setiosflags(ios::showpoint) << grid[i][j].get_groundcover();
+       datafile << ",";
+       counter++;
+       if (counter == 10){
+         datafile << endl;
+         counter = 0;
+       }
+     }
+  }
+  
 }
 void Plot::load(string name){
 //load from file
