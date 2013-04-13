@@ -11,7 +11,27 @@
 
 using namespace std;
 
-//global
+int Plot::steepest(int b, int a){
+
+  if (a >= 0 && a < 10 && b >= 0 && b < 10){
+    double minimum = grid[a-1][b-1].get_elevation();
+    double maximum = grid[a-1][b-1].get_elevation();
+    for (int i=0;i<3;i++) {
+      for (int j=0; j<3; j++) {
+        cout << "line: " << a-1+i << "column" << b-1+j << endl;
+        if (grid[(a-1)+i][(b-1)+j].get_elevation() < minimum){
+          minimum = grid[(a-1)+i][(b-1)+j].get_elevation();
+        }
+        if (grid[(a-1)+i][(b-1)+j].get_elevation() > maximum){
+          maximum = grid[(a-1)+i][(b-1)+j].get_elevation();
+        }
+      }
+    }
+    return maximum - minimum;
+  }
+}
+
+
 void Plot::minimum(){
   double minimum = grid[0][0].get_elevation();
   for (int i=0;i<10;i++) {

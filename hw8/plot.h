@@ -27,7 +27,7 @@ class Plot {
     void loadplot(string);
     void minimum(); // lowest elevation in plot of land
     void maximum(); // highest elevation in plot of land
-    void steepest(); // largest dfiferent in elevation for adjacent square meters
+    int steepest(int a, int b); // largest dfiferent in elevation for adjacent square meters
     int passable(); // not sure
 
 };

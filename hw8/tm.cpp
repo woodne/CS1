@@ -27,6 +27,8 @@ int main() {
   cout << endl << f << endl;
   int a, b;
 
+  int steepest = p.steepest(2,1);
+  cout << "Steepest: " << steepest << endl;
 
 
   //cout << "Do you want to view a squares attributes? Enter the coordinates!\n";
