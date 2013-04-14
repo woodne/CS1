@@ -1,6 +1,24 @@
 /* Josh Hartshorn
    CS120 Homework 8
    Terrain Manager Project
+
+   I essentially used the passable function provided. I initially thought I only had
+   to look at a straight line across the grid. But then when I read the
+   assignment before turning it in I saw you wanted diagonals also. This
+   Introduced a problem.
+
+   Consider:
+   O G G 0 0
+   G O O O G
+   O G G G O
+
+   The first path will fail, and the second path will be a success. But I
+   couldn't think of a good way to keep track of failed paths. This 
+   assignment is already several weeks late. So I opted to use your set of integers class
+   and I made a point of learning why it works. Very clever solution by the way!
+
+   I hope I have the chance to take an algorithms class. Interesting stuff. dfs
+
 */
 
 #include <iostream>
@@ -9,6 +27,7 @@
 #include "string"
 #include <algorithm>
 #include <iomanip>
+#include "soi.h"
 
 using namespace std;
 
@@ -91,43 +110,35 @@ int Plot::passable(){
 }
 int Plot::passableEW()
 {
-//only grass is passable, so only need to check for 'G'
-int depth = 0; //reached end
-int line = 0; //line number
-int found = 0;
-int depth_check = 0;
-int line_check = 0;
-//check for passable terrain on edge
-for(line=0;line<10;line++){
-  line_check++;
-  cout << "Line: " << line << endl;
-  if (grid[line][0].get_groundcover() == 'G'){
-    found=0;
-    depth_check=0;
-    for(depth = 0; depth < 10; depth++){
-      if (grid[line][depth].get_groundcover()== 'G'){
-        found++;
-	depth_check++;
-        cout << " Line: " << line << " Depth: " << depth_check << " Found Grass: " << found << endl;
+  // clever solution. thanks for showing it!
+
+  // let s[0] be the set of passable (grass) squares in column 0,
+  //      obtained by simply checking each to see if it is 'G'
+  SetOfIntegers s[10];
+  for(int i=0;i<10;i++)
+    if (grid[i][0].get_groundcover() == 'G')
+      s[0].insert(i);
+
+  // for each column i in 1 to 9 do, construct s[i] as follows:
+  for(int i=1; i<10; i++) {
+
+  //      for each member of s<sub>i-1</sub>
+    for(int j=0; j<10; j++) {
+      if (s[i-1].is_member(j)) {
+
+  //           check diagonally up and down, and straight across:
+	for(int k = j-1; k<=j+1; k++) {
+  //		  if 'G' then
+	  if (grid[i][k].get_groundcover() == 'G') {
+  //                 insert into s<sub>i</sub>
+	    s[i].insert(k);
+	  }
+	}
       }
-      else{
-	cout << "\nSomething blocks our path!!" << endl;
-        break;
-      }
-    }
-    if (found >= 10){
-      cout << "\n We have a row!!" << endl;
-      return true;
-    }
-    if (depth_check >= 9){
-      cout << "\n We do not have a row!" << endl;
-      return false;
     }
   }
-}
-  if (line_check >= 9){
-    return false;
-  }
+  return s[9].size() != 0;
+
 }
 
 int Plot::passableNS(){
