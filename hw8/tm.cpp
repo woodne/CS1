@@ -19,6 +19,7 @@ int main() {
   cin >> s;
   p.load(s);
   int choice;
+  int f;
 
   bool quit = false;
   while(!quit){
@@ -29,6 +30,10 @@ int main() {
     cout << "\tEnter (3) for maximum plot height" << endl;
     cout << "\tEnter (4) for minimum plot height" << endl;
     cout << "\tEnter (5) to determine if terrain is passable" << endl;
+    cout << "\tEnter (6) to find the steepness around coordinates "
+         << "of your choice." << endl;
+    cout << "\tEnter (7) to -view- a square. Format Y axis then X axis" << endl;
+    cout << "\tEnter (8) to -edit- a square. Format Y axis then X axis" << endl;
     cout << "\tEnter (10) to quit" << endl;
     cin >> choice;
     switch(choice){
@@ -40,32 +45,48 @@ int main() {
               break;
       case 4: cout << "\nMinimum:\n \t"; p.minimum(); 
               break;
-      case 5: int f = p.passable();
+      case 5: f = p.passable();
               cout << "\nPassable:\n \t" << f << endl; 
               break;
-      case 10: quit = true;
-      
+      case 6:{
+        int a, b;
+        cout << "Enter the coordinates: ";
+        cin >> a >> b;
+        int steepest = p.steepest(a, b);
+        cout << "\n Steepest: " << steepest << endl;
+        break;
+      }
+      case 7:{
+        int a, b;
+        cout << "Enter the coordinates of the square you want to view: ";
+        cin >> a >> b;
+        cout << endl;
+        p.print_square(a,b);
+        break;
+      }
+      case 8:{
+        int a, b;
+        cout << "Enter the coordinates of the square you want to edit: ";
+        cin >> a >> b;
+        cout << endl;
+        p.edit_square(a,b);
+        break;
+      }
+      case 10: {
+        cout << "Do you want to save? Press 9 to save." << endl;
+        int save;
+        cin >> save;
+        if (save == 9){
+          cout << "Enter the filename: ";
+          string file;
+          cin >> file;
+          p.save(file);
+        }
+        quit = true; 
+      } 
     }
   }
-  int a, b;
-
-  int steepest = p.steepest(2,1);
-  cout << "Steepest: " << steepest << endl;
   p.save("test");
-
-  //cout << "Do you want to view a squares attributes? Enter the coordinates!\n";
-  //cin >> a >> b;
-  //p.print_square(a,b);
-
-  //cout << "Do you want to change a squares attributes? Enter the coordinates!\n";
-  //cin >> a >> b;
-  //p.edit_square(a,b);
-
-  //user must print individual square elevation (like grid 2-2)
-  //user needs to print 10x10 grid of elevations
-  //user needs to print 10x10 grid of terrain (GBT)
-  //user needs to request the minimum and maximum elevation
-  //identify file that needs loading and then read it
 
   return 0;
 }
