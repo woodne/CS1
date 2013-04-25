@@ -31,7 +31,18 @@
 #include "soi.h"
 
 using namespace std;
+double Plot::mean(){
+  double total;
+  for (int i=0;i<10;i++) {
+    for (int j=0; j<10; j++) {
+       total += grid[i][j].get_elevation();
+       cout << total<< endl;
+    }
+  }
+  total = total/100;
 
+  return total;
+}
 int Plot::steepest(int b, int a){
 
   if (a >= 0 && a < 10 && b >= 0 && b < 10){

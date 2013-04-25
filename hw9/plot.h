@@ -26,6 +26,7 @@ class Plot {
     void edit_square(int a, int b);
     void minimum(); // lowest elevation in plot of land
     void maximum(); // highest elevation in plot of land
+    double mean();
     int steepest(int a, int b); // largest dfiferent in elevation for adjacent square meters
     int passable(); // not sure
 

@@ -34,6 +34,7 @@ int main() {
          << "of your choice." << endl;
     cout << "\tEnter (7) to -view- a square. Format Y axis then X axis" << endl;
     cout << "\tEnter (8) to -edit- a square. Format Y axis then X axis" << endl;
+    cout << "\tEnter (9) to find the average of all squares" << endl;
     cout << "\tEnter (10) to quit" << endl;
     cin >> choice;
     switch(choice){
@@ -70,6 +71,10 @@ int main() {
         cin >> a >> b;
         cout << endl;
         p.edit_square(a,b);
+        break;
+      }
+      case 9:{
+        cout << "The average is: " << p.mean() << " meters." << endl;
         break;
       }
       case 10: {
