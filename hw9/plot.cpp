@@ -127,10 +127,13 @@ int Plot::passableEW()
   // let s[0] be the set of passable (grass) squares in column 0,
   //      obtained by simply checking each to see if it is 'G'
   SetOfIntegers s[10];
+  double prev_height = 0;
+  double new_height = 0;
   for(int i=0;i<10;i++)
-    if (grid[i][0].get_groundcover() == 'G')
+    if (grid[i][0].get_groundcover() == 'G'){
+      prev_height = grid[i][0].get_elevation();
       s[0].insert(i);
-
+    }
   // for each column i in 1 to 9 do, construct s[i] as follows:
   for(int i=1; i<10; i++) {
 
@@ -140,10 +143,18 @@ int Plot::passableEW()
 
   //           check diagonally up and down, and straight across:
 	for(int k = j-1; k<=j+1; k++) {
-  //		  if 'G' then
-	  if (grid[i][k].get_groundcover() == 'G') {
+  //		  if 'G' then	  
+          if (grid[i][k].get_groundcover() == 'G') {
+            //gets the elevation of current square
+            new_height = grid[i][k].get_elevation();
   //                 insert into s<sub>i</sub>
-	    s[i].insert(k);
+	    if (new_height - prev_height <= 2 && new_height - prev_height >= -2){
+              s[i].insert(k);
+              cout << "Height is within passable range!" << i << " " << k << endl;
+              cout << "     prev_height = " << prev_height << " New height was " << new_height << endl;
+              //replaces previous height with the current one
+              prev_height = new_height;
+            }
 	  }
 	}
       }
