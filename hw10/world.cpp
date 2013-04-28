@@ -78,6 +78,9 @@ void world::update(){
             if(terrain[x][y] == 3 || terrain[x][y] == 5){
               bots[x][y] -> energy_drain();
             }
+            if(terrain[x][y] == 4){
+              bots[x][y] -> energy_boost();
+            }
             if(bots[tempx][tempy] == NULL){
                temp = bots[x][y];
                bots[x][y] = NULL;
