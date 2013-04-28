@@ -1,25 +1,53 @@
 #include<iostream>
 #include<cstdlib>
 using namespace std;
-#include"robot.h"
+
 #include"world.h"
 
 void world::set_up(){
    for(int y = 0; y < HEIGHT; y++){
       for(int x = 0; x < WIDTH; x++){
          bots[x][y] = NULL;
-         terrain[x][y] = rand()%3;
+         terrain[x][y] = rand()%6;
       }
    }
    bots[2][2] = new robot(1);
    bots[7][7] = new robot(2);
+   bots[20][20] = new robot(3);
+   bots[10][30] = new robot(4);
+   bots[10][31] = new robot(5);
+   bots[5][5] = new robot(6);
+   bots[15][15] = new robot(7);
+   bots[10][37] = new robot(8);
 }
 
 void world::draw(){
    for(int y = 0; y < HEIGHT; y++){
       for(int x = 0; x < WIDTH; x++){
          if(bots[x][y] == NULL)
-            cout << (char)(terrain[x][y] + 45);
+          switch(terrain[x][y]){
+            case 1:
+              cout << "T";
+              break;
+            case 2:
+              cout << "G";
+              break;
+            case 3:
+              cout << "M";
+              break;
+            case 4:
+              cout << "W";
+              break;
+            case 5:
+              cout << "T";
+              break;
+            case 0:
+              cout << "B";
+              break;
+            case 6:
+              cout << "R";
+              break;
+          }
          else
             bots[x][y] -> draw();
      }
@@ -44,9 +72,12 @@ void world::update(){
             tempy = y;
             bots[x][y] -> move(tempx,tempy);
             if(tempx < 0 || tempx >= WIDTH)
-               tempx = x;
+              tempx = x;
             if(tempy < 0 || tempy >= HEIGHT)
-               tempy = y;
+              tempy = y;
+            if(terrain[x][y] == 3 || terrain[x][y] == 5){
+              bots[x][y] -> energy_drain();
+            }
             if(bots[tempx][tempy] == NULL){
                temp = bots[x][y];
                bots[x][y] = NULL;

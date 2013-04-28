@@ -31,6 +31,14 @@ robot::robot(int id){
     moved = 0;
     direction = 0;
 }
+void robot::energy_drain(){
+  cout << "Difficult Terrain. Robot #" << ID << " lost 10 Energy." << endl;
+  energy-=10;
+}
+void robot::energy_boost(){
+  cout << "Robot #" << ID <<" found an energy boost!" << endl;
+  energy+=10;
+}
 
 void robot::draw(){
     cout << "#";
@@ -41,6 +49,7 @@ void robot::print(){
 }
 
 void robot::move(int &x,int &y){
+  if (energy > 0){
     if(moved == 1)
         return;
     switch(rand()%4){
@@ -57,5 +66,10 @@ void robot::move(int &x,int &y){
       default:
          cout << "Error in robot move." << endl;
      }
+  }
+  else{
+    energy = 0;
+    cout << "Robot #" << ID << " is out of energy!!" << endl;
+  }
   moved = 1;
 }

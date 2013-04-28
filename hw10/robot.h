@@ -13,4 +13,6 @@ class robot{
     void draw();
     void print();
     void move(int &, int &); // pass-by-reference arguments
+    void energy_drain();
+    void energy_boost();
 };

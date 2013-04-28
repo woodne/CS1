@@ -2,8 +2,8 @@
 #include<cstdlib>
 #include<ctime>
 using namespace std;
-#include"robot.h"
 #include"world.h"
+
 
 int main(){
   world a_world;
