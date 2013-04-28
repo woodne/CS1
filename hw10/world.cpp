@@ -1,3 +1,11 @@
+/*Josh Hartshorn
+  CS120
+
+  If a robot lands on a space with (M)ountains or (T)rees it loses 10 energy. 
+  If it lands on (W) it will gain energy. Right now they are very difficult
+  to see. I may need to change the character used to represent robots.
+*/
+
 #include<iostream>
 #include<cstdlib>
 using namespace std;
