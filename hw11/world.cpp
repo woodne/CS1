@@ -1,24 +1,49 @@
 #include<iostream>
 #include<cstdlib>
+#include <fstream>
+#include <string>
 using namespace std;
 
 #include"world.h"
 
 void world::set_up(){
+  string input;
+  cout << "Do you want to load a world? Type \"yes\" or no" << endl;
+  cin >> input;
+  if (input == "yes"){
+    string filename;
+    cout << "Enter the world files name"<< endl;
+    cin >> filename;
+    //load data
+    ifstream datafile;
+    datafile.open(filename.c_str());
+    if (!datafile){
+      cout << "Error loading file." << endl;
+    }
+    for(int y = 0; y < HEIGHT; y++){
+      for(int x = 0; x < WIDTH; x++){
+        char gc;
+        datafile >> gc;
+        cout << "Data: " << gc << endl;
+        bots[x][y] = NULL;
+        terrain[x][y] = gc;
+      }
+    }
+
+
+  }
+  else{
+    cout << "Randomizing WorldMap" << endl;
    for(int y = 0; y < HEIGHT; y++){
       for(int x = 0; x < WIDTH; x++){
          bots[x][y] = NULL;
          terrain[x][y] = rand()%6;
       }
-   }
+    }
+  }
    bots[2][2] = new robot(1);
    bots[7][7] = new robot(2);
-   bots[20][20] = new robot(3);
-   bots[10][30] = new robot(4);
-   bots[10][31] = new robot(5);
    bots[5][5] = new robot(6);
-   bots[15][15] = new robot(7);
-   bots[10][37] = new robot(8);
 }
 
 void world::draw(){
@@ -47,6 +72,8 @@ void world::draw(){
             case 6:
               cout << "R";
               break;
+            default:
+              cout << "_";
           }
          else
             bots[x][y] -> draw();
@@ -77,6 +104,9 @@ void world::update(){
               tempy = y;
             if(terrain[x][y] == 3 || terrain[x][y] == 5){
               bots[x][y] -> energy_drain();
+            }
+            if(terrain[x][y] == 4){
+              bots[x][y] -> energy_boost();
             }
             if(bots[tempx][tempy] == NULL){
                temp = bots[x][y];
