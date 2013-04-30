@@ -30,6 +30,7 @@ robot::robot(int id){
     ID = id;
     moved = 0;
     direction = 0;
+    player = 0;
 }
 void robot::energy_drain(){
   cout << "Difficult Terrain. Robot #" << ID << " lost 10 Energy." << endl;
@@ -39,17 +40,25 @@ void robot::energy_boost(){
   cout << "Robot #" << ID <<" found an energy boost!" << endl;
   energy+=10;
 }
+void robot::player_controlled(){
+  player = 1;
+}
 
 void robot::draw(){
     cout << "#";
 }
 
 void robot::print(){
-    cout<<"Robot "<<ID<<": Energy = "<<energy<< " Direction = "<<direction;
+    cout<<"Robot "<<ID<<": Energy = "<<energy<< " Direction = "<<direction
+          << " Player: " << player << endl;
 }
 
 void robot::move(int &x,int &y){
   if (energy > 0){
+    if(player == 1){
+      //if player is 1 then ask player if he wants to move in whichever direction. then do.
+
+    }
     if(moved == 1)
         return;
     switch(rand()%4){

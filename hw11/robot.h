@@ -4,11 +4,13 @@ class robot{
     int energy;
     int ID;
     int moved;
+    int player;
     void turnLeft(); // a private function
     void turnRight(); // a private function
     void forward(int &, int &); // a private function
   public:
     robot(int);
+    void player_controlled();
     void refresh() {moved = 0;} // an in-line function
     void draw();
     void print();

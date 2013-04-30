@@ -26,7 +26,7 @@ void world::set_up(){
         datafile >> gc;
         cout << "Data: " << gc << endl;
         bots[x][y] = NULL;
-        terrain[x][y] = gc;
+        terrain[x][y] = gc-48; // subtract 48 because the value is a char
       }
     }
 
@@ -42,6 +42,7 @@ void world::set_up(){
     }
   }
    bots[2][2] = new robot(1);
+   bots[2][2] -> player_controlled();
    bots[7][7] = new robot(2);
    bots[5][5] = new robot(6);
 }
@@ -73,7 +74,8 @@ void world::draw(){
               cout << "R";
               break;
             default:
-              cout << "_";
+              cout << terrain[x][y] << " :: ";
+
           }
          else
             bots[x][y] -> draw();
