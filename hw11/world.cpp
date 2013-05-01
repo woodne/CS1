@@ -100,6 +100,10 @@ void world::update(){
             tempx = x;
             tempy = y;
             bots[x][y] -> move(tempx,tempy);
+            if (bots[tempx][tempy] != NULL){
+              bots[x][y] -> energy_boost();
+              bots[tempx][tempy] -> energy_drain();
+              }
             if(tempx < 0 || tempx >= WIDTH)
               tempx = x;
             if(tempy < 0 || tempy >= HEIGHT)
