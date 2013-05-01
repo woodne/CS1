@@ -9,6 +9,7 @@ int main(){
   world a_world;
   srand(time(NULL));
   a_world.set_up();
+  a_world.draw();
   do{
      a_world.update();
      a_world.draw();

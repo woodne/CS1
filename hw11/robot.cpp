@@ -33,7 +33,7 @@ robot::robot(int id){
     player = 0;
 }
 void robot::energy_drain(){
-  cout << "Difficult Terrain. Robot #" << ID << " lost 10 Energy." << endl;
+  cout << "Robot #" << ID << " lost 10 Energy." << endl;
   energy-=10;
 }
 void robot::energy_boost(){
@@ -45,7 +45,23 @@ void robot::player_controlled(){
 }
 
 void robot::draw(){
-    cout << "#";
+    if(player==1){
+      if (direction == 0){
+        cout << "Λ";
+      }
+      if (direction == 2){
+        cout << "V";
+      }
+      if (direction == 1){
+        cout << "<";
+      }
+      if (direction == 3){
+        cout << ">";
+      }
+    }
+    else{
+      cout << "#";
+    }
 }
 
 void robot::print(){
@@ -55,10 +71,27 @@ void robot::print(){
 
 void robot::move(int &x,int &y){
   if (energy > 0){
-    if(player == 1){
+    if(player == 1 && moved == 1){
       //if player is 1 then ask player if he wants to move in whichever direction. then do.
-
+      cout << "It is your move. Press 0 to move right, 1 to move left, and 2 to move forward." <<endl;
+      int choice;
+      cin >> choice;
+      switch(choice){
+        case 0:
+          turnLeft();
+          break;
+        case 1:
+          turnRight();
+          break;
+        case 2:
+        case 3:
+          forward(x,y);
+          break;
+        default:
+          cout << "Error in robot move." << endl;
+      }
     }
+  else{
     if(moved == 1)
         return;
     switch(rand()%4){
@@ -76,9 +109,11 @@ void robot::move(int &x,int &y){
          cout << "Error in robot move." << endl;
      }
   }
+ }
   else{
     energy = 0;
     cout << "Robot #" << ID << " is out of energy!!" << endl;
   }
   moved = 1;
 }
+
