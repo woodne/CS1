@@ -1,3 +1,4 @@
+#include "node.h"
 class linkedlist{ private:
   int count;
   node *head; 

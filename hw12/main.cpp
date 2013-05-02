@@ -1,3 +1,9 @@
+/*Josh Hartshorn
+  CS120
+  Homework 12
+
+*/
+
 #include <iostream>
 #include <cstdlib>
 

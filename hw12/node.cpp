@@ -1,4 +1,7 @@
 #include "node.h"
+#include <iostream>
+#include "robot.h"
+using namespace std;
 
 node::node(){ // constructor
   next = NULL; 
@@ -18,7 +21,7 @@ void node::turnLeft(){
   cout << endl;
 } 
 int node::remove(int n){
-  if(next -> data) -> getID() == n{ //found the right id
+  if((next -> data) -> getID() == n){ //found the right id
     node *temp;
     temp = next;
     next = next->next;
