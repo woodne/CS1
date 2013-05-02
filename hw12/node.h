@@ -1,3 +1,6 @@
+#ifndef ROBOT_H
+#include "robot.h"
+#endif
 class node{ 
   private:
     node *next;

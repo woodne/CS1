@@ -1,4 +1,8 @@
+#ifndef NODE_H
 #include "node.h"
+#endif
+#include <cstdio>
+#include <iostream>
 class linkedlist{ private:
   int count;
   node *head; 

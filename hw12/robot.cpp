@@ -1,8 +1,10 @@
-#include<iostream>
-#include<cstdlib>
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-#include"robot.h"
+#ifndef ROBOT_H
+#include "robot.h"
+#endif
 
 const int HEIGHT = 10;
 const int WIDTH = 10;
