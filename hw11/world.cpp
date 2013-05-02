@@ -1,3 +1,9 @@
+/*Josh Hartshorn
+  cs120
+
+  When robots bump into each other we get a bus 10 error. Need to solve it
+  another way
+*/
 #include<iostream>
 #include<cstdlib>
 #include <fstream>
