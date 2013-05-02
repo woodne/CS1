@@ -2,8 +2,9 @@
 #include<cstdlib>
 #include<ctime>
 using namespace std;
+#ifndef _world
 #include"world.h"
-
+#endif
 
 int main(){
   world a_world;

@@ -1,7 +1,11 @@
 #include<iostream>
 #include<cstdlib>
 using namespace std;
+
 #include"robot.h"
+
+const int HEIGHT = 10;
+const int WIDTH = 10;
 
 void robot::turnLeft(){
     energy--;
@@ -16,13 +20,13 @@ void robot::turnRight(){
 void robot::forward(int &x,int &y){
     energy -= 2;
     if(direction == 0)
-        y--;
+      if(y > 0)y--;
     if(direction == 2)
-        y++;
+      if (y < HEIGHT) y++;
     if(direction == 1)
-        x++;
+      if (x < WIDTH) x++;
     if(direction == 3)
-        x--;
+      if (x > 0) x--;
     }
 
 robot::robot(int id){
@@ -53,10 +57,10 @@ void robot::draw(){
         cout << "V";
       }
       if (direction == 1){
-        cout << "<";
+        cout << ">";
       }
       if (direction == 3){
-        cout << ">";
+        cout << "<";
       }
     }
     else{
@@ -71,29 +75,25 @@ void robot::print(){
 
 void robot::move(int &x,int &y){
   if (energy > 0){
-    if(player == 1 && moved == 1){
+    if(player == 1 && moved == 0){
       //if player is 1 then ask player if he wants to move in whichever direction. then do.
       cout << "It is your move. Press 0 to turn right, 1 to turn left, and 2 to move forward." <<endl;
       int choice;
       cin >> choice;
       switch(choice){
         case 0:
-          turnLeft();
-          break;
-        case 1:
-          turnRight();
-          break;
-        case 2:
-        case 3:
           forward(x,y);
           break;
-        default:
-          cout << "Error in robot move." << endl;
+        case 1:
+          turnLeft();
+          break;
+        case 2:
+          turnRight();
+          break;
       }
     }
   else{
-    if(moved == 1)
-        return;
+    if(player!=1 && moved == 0){
     switch(rand()%4){
       case 0:
          turnLeft();
@@ -110,10 +110,11 @@ void robot::move(int &x,int &y){
      }
   }
  }
-  else{
+  }else{
     energy = 0;
     cout << "Robot #" << ID << " is out of energy!!" << endl;
   }
   moved = 1;
 }
+
 
