@@ -77,7 +77,7 @@ void robot::move(int &x,int &y){
   if (energy > 0){
     if(player == 1 && moved == 0){
       //if player is 1 then ask player if he wants to move in whichever direction. then do.
-      cout << "It is your move. Press 0 to turn right, 1 to turn left, and 2 to move forward." <<endl;
+      cout << "It is your move. Press 1 to turn left, 2 to turn left, and 0 to move forward." <<endl;
       int choice;
       cin >> choice;
       switch(choice){

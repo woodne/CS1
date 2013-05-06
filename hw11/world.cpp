@@ -50,7 +50,7 @@ void world::set_up(){
    bots[2][2] = new robot(1);
    bots[2][2] -> player_controlled();
    bots[7][7] = new robot(2);
-   bots[5][5] = new robot(6);
+   bots[5][5] = new robot(3);
 }
 
 void world::draw(){
@@ -106,10 +106,6 @@ void world::update(){
             tempx = x;
             tempy = y;
             bots[x][y] -> move(tempx,tempy);
-            if (bots[tempx][tempy] != NULL){
-              bots[x][y] -> energy_boost();
-              bots[tempx][tempy] -> energy_drain();
-              }
             if(tempx < 0 || tempx >= WIDTH)
               tempx = x;
             if(tempy < 0 || tempy >= HEIGHT)
@@ -119,6 +115,11 @@ void world::update(){
             }
             if(terrain[x][y] == 4){
               bots[x][y] -> energy_boost();
+            }
+            if (bots[tempx][tempy] != NULL){
+              cout << "Collision!" << endl;
+              bots[x][y] -> energy_boost();
+              bots[tempx][tempy] -> energy_drain();
             }
             if(bots[tempx][tempy] == NULL){
                temp = bots[x][y];
