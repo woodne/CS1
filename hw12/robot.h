@@ -1,3 +1,6 @@
+#ifndef ROBOT_H
+#define ROBOT_H
+
 class robot{
   private:
     int direction;
@@ -19,3 +22,5 @@ class robot{
     void energy_boost();
     int getID() {return ID;}
 };
+
+#endif

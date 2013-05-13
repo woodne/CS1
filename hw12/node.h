@@ -1,6 +1,7 @@
-#ifndef ROBOT_H
+#ifndef NODE_H
+#define NODE_H
+
 #include "robot.h"
-#endif
 class node{ 
   private:
     node *next;
@@ -16,3 +17,4 @@ class node{
     int remove(int); 
     void remove_data() {delete data;}
 };
+#endif
