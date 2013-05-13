@@ -1,8 +1,6 @@
 #include "node.h"
 #include <iostream>
-#ifndef ROBOT_H
-#include "robot.h"
-#endif
+
 using namespace std;
 
 node::node(){ // constructor

@@ -1,6 +1,7 @@
-#ifndef NODE_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+
 #include "node.h"
-#endif
 #include <cstdio>
 #include <iostream>
 class linkedlist{ private:
@@ -13,3 +14,5 @@ class linkedlist{ private:
     void turnLeft(); 
     void remove(int);
 };
+
+#endif

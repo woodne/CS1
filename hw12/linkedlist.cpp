@@ -29,8 +29,12 @@ void linkedlist::remove(int n){
   }
 }
 void linkedlist::print(){
-  cout << "There are " << count;
-  cout << " robots in the list: \n";
+    std::cout << "There are " << count;
+    std::cout << " robots in the list: \n";
   if(head !=NULL)
     head->turnLeft();
+}
+
+void linkedlist::turnLeft() {
+    // You were missing this
 }

@@ -2,9 +2,7 @@
 #include <cstdlib>
 using namespace std;
 
-#ifndef ROBOT_H
 #include "robot.h"
-#endif
 
 const int HEIGHT = 10;
 const int WIDTH = 10;
