@@ -99,13 +99,19 @@ void world::draw(){
 
 void world::update(){
    int tempx,tempy;
+   int destination1, destination2;
    robot *temp;
    for(int y = 0; y < HEIGHT; y++){
       for(int x = 0; x < WIDTH; x++){
          if(bots[x][y] != NULL){
             tempx = x;
             tempy = y;
-            bots[x][y] -> move(tempx,tempy);
+	    if(!moves && player == 1){
+		cout << "Enter the coordinates where you want to move. (X Y)" 
+		     << endl;
+		cin >> destination1 >> destination2;
+            }
+            bots[x][y] -> movetoward(tempx,tempy, destination1, destination2);
             if(tempx < 0 || tempx >= WIDTH)
               tempx = x;
             if(tempy < 0 || tempy >= HEIGHT)

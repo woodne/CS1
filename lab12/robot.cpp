@@ -72,8 +72,11 @@ void robot::print(){
     cout<<"Robot "<<ID<<": Energy = "<<energy<< " Direction = "<<direction
           << " Player: " << player << endl;
 }
-/* This is being replaced by movetoward()
-void robot::move(int &x,int &y){
+
+void robot::movetoward(int &x,int &y, int x2, int y2){
+  if (x==x2 && y == y2){
+    moves = true;
+  }
   if (energy > 0){
     if(player == 1 && moved == 0){
       //if player is 1 then ask player if he wants to move in whichever direction. then do.
@@ -115,11 +118,6 @@ void robot::move(int &x,int &y){
     cout << "Robot #" << ID << " is out of energy!!" << endl;
   }
   moved = 1;
-}
-*/
-void robot::movetoward(int &x, int &y, int &a, int &b){
-  
-
 }
 
 
