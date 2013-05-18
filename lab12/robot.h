@@ -14,7 +14,7 @@ class robot{
     void refresh() {moved = 0;} // an in-line function
     void draw();
     void print();
-    void move(int &, int &); // pass-by-reference arguments
+    void movetoward(int &, int &); // pass-by-reference arguments ---- add two more arguments for lab
     void energy_drain();
     void energy_boost();
 };
