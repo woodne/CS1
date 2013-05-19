@@ -71,8 +71,8 @@ void robot::print(){
           << " Player: " << player << endl;
 }
 int move_number = 0;
-bool moves = false;
 void robot::movetoward(int &x,int &y, int x2, int y2){
+  bool moves = false;
   if (x==x2 && y == y2){
     moves = true;
   }

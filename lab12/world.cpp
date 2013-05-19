@@ -107,7 +107,7 @@ void world::update(){
             tempx = x;
             tempy = y;
             cout << "player number: " << bots[x][y] -> get_player() << endl;
-	          if(bots[x][y] -> get_player()== 1){
+	          if(bots[x][y] -> get_player()== 1 && bots[x][y] -> get_id() == 1){
 		          cout << "Enter the coordinates where you want to move. (X Y)" 
 		              << endl;
 		          cin >> destination1 >> destination2;
