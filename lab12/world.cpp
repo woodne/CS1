@@ -49,8 +49,8 @@ void world::set_up(){
   }
    bots[2][2] = new robot(1);
    bots[2][2] -> player_controlled();
-   bots[7][7] = new robot(2);
-   bots[5][5] = new robot(3);
+   bots[2][7] = new robot(2);
+   bots[3][3] = new robot(3);
 }
 
 void world::draw(){
@@ -96,7 +96,7 @@ void world::draw(){
            cout << "\n";
         }
 }
-
+   int turn_count = 0;
 void world::update(){
    int tempx,tempy;
    int destination1, destination2;
@@ -106,10 +106,13 @@ void world::update(){
          if(bots[x][y] != NULL){
             tempx = x;
             tempy = y;
+            cout << "player number: " << bots[x][y] -> get_player() << endl;
 	          if(bots[x][y] -> get_player()== 1){
 		          cout << "Enter the coordinates where you want to move. (X Y)" 
 		              << endl;
 		          cin >> destination1 >> destination2;
+              turn_count++;
+              cout << "Turn: " << turn_count << endl;
             }
             bots[x][y] -> movetoward(tempx,tempy, destination1, destination2);
             if(tempx < 0 || tempx >= WIDTH)
@@ -123,7 +126,8 @@ void world::update(){
               bots[x][y] -> energy_boost();
             }
             if (bots[tempx][tempy] != NULL){
-              cout << "Collision!" << endl;
+              cout << "Collision! Robot " << bots[x][y] -> get_id() << " stole energy from " 
+                << bots[tempx][tempy] -> get_id() << endl;
               bots[x][y] -> energy_boost();
               bots[tempx][tempy] -> energy_drain();
             }

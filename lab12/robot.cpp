@@ -37,11 +37,9 @@ robot::robot(int id){
     player = 0;
 }
 void robot::energy_drain(){
-  cout << "Robot #" << ID << " lost 10 Energy." << endl;
   energy-=10;
 }
 void robot::energy_boost(){
-  cout << "Robot #" << ID <<" found an energy boost!" << endl;
   energy+=10;
 }
 void robot::player_controlled(){
@@ -72,17 +70,20 @@ void robot::print(){
     cout<<"Robot "<<ID<<": Energy = "<<energy<< " Direction = "<<direction
           << " Player: " << player << endl;
 }
+int move_number = 0;
+bool moves = false;
 void robot::movetoward(int &x,int &y, int x2, int y2){
-  bool moves = false;
   if (x==x2 && y == y2){
     moves = true;
   }
   if (energy > 0){
-    if (!moves && player == 1){
-      if (x < x2){direction=1;}
-      if (x > x2){direction=3;}
-      if (y > y2){direction=0;}
-      if (y < y2){direction=2;}
+    if (!moves && player == 1 && moved == 0){
+      move_number++;
+      cout << "Move: " << move_number << endl;
+      if (x < x2){direction=1; forward(x,y);}
+      else if (x > x2){direction=3; forward(x,y);}
+      else if (y > y2){direction=0; forward(x,y);}
+      else if (y < y2){direction=2; forward(x,y);}
     }
     else{
       if(player!=1 && moved == 0){
@@ -104,7 +105,6 @@ void robot::movetoward(int &x,int &y, int x2, int y2){
     }
   }else{
     energy = 0;
-    cout << "Robot #" << ID << " is out of energy!!" << endl;
   }
   moved = 1;
 }
