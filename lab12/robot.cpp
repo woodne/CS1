@@ -72,47 +72,36 @@ void robot::print(){
     cout<<"Robot "<<ID<<": Energy = "<<energy<< " Direction = "<<direction
           << " Player: " << player << endl;
 }
-
 void robot::movetoward(int &x,int &y, int x2, int y2){
+  bool moves = false;
   if (x==x2 && y == y2){
     moves = true;
   }
   if (energy > 0){
-    if(player == 1 && moved == 0){
-      //if player is 1 then ask player if he wants to move in whichever direction. then do.
-      cout << "It is your move. Press 1 to turn left, 2 to turn right, and 0 to move forward." <<endl;
-      int choice;
-      cin >> choice;
-      switch(choice){
+    if (!moves && player == 1){
+      if (x < x2){x++;}
+      if (x > x2){x--;}
+      if (y > y2){y--;}
+      if (y < y2){y++;}
+    }
+    else{
+      if(player!=1 && moved == 0){
+      switch(rand()%4){
         case 0:
-          forward(x,y);
-          break;
-        case 1:
           turnLeft();
           break;
-        case 2:
+        case 1:
           turnRight();
           break;
+        case 2:
+        case 3:
+          forward(x,y);
+          break;
+        default:
+          cout << "Error in robot move." << endl;
+        }
       }
     }
-  else{
-    if(player!=1 && moved == 0){
-    switch(rand()%4){
-      case 0:
-         turnLeft();
-         break;
-      case 1:
-         turnRight();
-         break;
-      case 2:
-      case 3:
-         forward(x,y);
-         break;
-      default:
-         cout << "Error in robot move." << endl;
-     }
-  }
- }
   }else{
     energy = 0;
     cout << "Robot #" << ID << " is out of energy!!" << endl;

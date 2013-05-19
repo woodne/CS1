@@ -9,15 +9,14 @@ class robot{
     void forward(int &, int &); // a private function
   public:
     robot(int);
-    bool moves = false;
     int energy;
-    int destination_x;
-    int destination_y;
+    int get_player(){return player;};
     void player_controlled();
     void refresh() {moved = 0;} // an in-line function
     void draw();
     void print();
     void movetoward(int &, int &, int, int); // pass-by-reference arguments
+    void move(int &, int &);
     void energy_drain();
     void energy_boost();
 };

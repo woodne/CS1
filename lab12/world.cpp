@@ -106,10 +106,10 @@ void world::update(){
          if(bots[x][y] != NULL){
             tempx = x;
             tempy = y;
-	    if(!moves && player == 1){
-		cout << "Enter the coordinates where you want to move. (X Y)" 
-		     << endl;
-		cin >> destination1 >> destination2;
+	          if(bots[x][y] -> get_player()== 1){
+		          cout << "Enter the coordinates where you want to move. (X Y)" 
+		              << endl;
+		          cin >> destination1 >> destination2;
             }
             bots[x][y] -> movetoward(tempx,tempy, destination1, destination2);
             if(tempx < 0 || tempx >= WIDTH)
