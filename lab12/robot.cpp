@@ -79,10 +79,10 @@ void robot::movetoward(int &x,int &y, int x2, int y2){
   }
   if (energy > 0){
     if (!moves && player == 1){
-      if (x < x2){x++;}
-      if (x > x2){x--;}
-      if (y > y2){y--;}
-      if (y < y2){y++;}
+      if (x < x2){direction=1;}
+      if (x > x2){direction=3;}
+      if (y > y2){direction=0;}
+      if (y < y2){direction=2;}
     }
     else{
       if(player!=1 && moved == 0){
