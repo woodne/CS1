@@ -11,32 +11,31 @@ private:
 public:
   LLS(string s);
   LLS(string s, LLS *rest);
-  print();
-  append(string s);
+  void print();
+  void append(string s);
 
 };
 LLS::LLS(string s){
   str  = s;
   next = NULL;
 }
-LLS::append(string s){
-if (next == NULL){
-  next = new LLS(s);
+void LLS::append(string s){
+  if (next == NULL){
+    next = new LLS(s);
+  }
+  else{
+    next->append(s);
+  }
 }
-else{
-  next->append(string s);
-}
-}
-LLS::print(){
+void LLS::print(){
   cout << str << endl;
   next -> print();
 }
-
-int main(int argc and char *argv[]){
+int main(int argc, char *argv[]){
   LLS *head = new LLS(argv[0]);
   if (argc > 1){
     for (int i = 0; i > -1; i--){
-      // call head->append(); on argv[i] or something
+      head -> append(argv[i]);
     }
   }
   head->print();
