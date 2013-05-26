@@ -29,12 +29,14 @@ void LLS::append(string s){
 }
 void LLS::print(){
   cout << str << endl;
-  next -> print();
+  if(next){
+    next -> print();
+  }
 }
 int main(int argc, char *argv[]){
   LLS *head = new LLS(argv[0]);
   if (argc > 1){
-    for (int i = 0; i > -1; i--){
+    for (int i = 1; i < argc; i++){
       head -> append(argv[i]);
     }
   }
