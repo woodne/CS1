@@ -1,44 +1,48 @@
 /* Josh Hartshorn
-   Lab 13 - Linked Lists!!
-*/
+ Lab 13 - Linked Lists!!
+ */
 #include <iostream>
 
 using namespace std;
 class LLS{
 private:
-  string str;
-  LLS* next;
+    string str;
+    LLS* next;
 public:
-  LLS(string s);
-  LLS(string s, LLS *rest);
-  print();
-  append(string s);
-
+    LLS(string s);
+    LLS(string s, LLS *rest);
+    void print();
+    void append(string s);
+    
 };
+
 LLS::LLS(string s){
-  str  = s;
-  next = NULL;
-}
-LLS::append(string s){
-if (next == NULL){
-  next = new LLS(s);
-}
-else{
-  next->append(string s);
-}
-}
-LLS::print(){
-  cout << str << endl;
-  next -> print();
+    str  = s;
+    next = NULL;
 }
 
-int main(int argc and char *argv[]){
-  LLS *head = new LLS(argv[0]);
-  if (argc > 1){
-    for (int i = 0; i > -1; i--){
-      // call head->append(); on argv[i] or something
+void LLS::append(string s){
+    if (next == NULL){
+        next = new LLS(s);
+    } else {
+        next->append(s);
     }
-  }
-  head->print();
-  return 0;
+}
+
+void LLS::print(){
+    cout << str << endl;
+    if (next) {
+        next -> print();
+    }
+}
+
+int main(int argc, char *argv[]){
+    LLS *head = new LLS(argv[0]);
+    if (argc > 1){
+        for (int i = 1; i < argc; i++){
+            head->append(argv[i]);
+        }
+    }
+    head->print();
+    return 0;
 }
