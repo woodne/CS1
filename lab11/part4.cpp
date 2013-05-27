@@ -1,3 +1,9 @@
+/* Josh Hartshorn
+   Lab 11
+   Using Pointers
+   Part 4
+*/
+
 #include <iostream>
 using namespace std;
 
