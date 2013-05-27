@@ -17,9 +17,11 @@ int gcd(int a, int b){
   }
 }
 
-int main(int argc, int argv[]){
+int main(int argc, char* argv[]){
   //main should take two command line arguments (the two integers)
-  cout << gcd(argv[2],argv[3]) << endl;
+  int a=atoi(argv[1]);
+  int b=atoi(argv[2]);
+  cout << gcd(a,b) << endl;
 
   return 0;
 }
