@@ -13,17 +13,13 @@ int gcd(int a, int b){
     return a;
   }
   else{ 
-    return (b,a%b);
+    return gcd(b,a%b);
   }
-  
-  return 0;
 }
 
-int main(){
+int main(int argc, int argv[]){
   //main should take two command line arguments (the two integers)
-  int a = 10;
-  int b = 20;
-  cout << gcd(a,b) << endl;
+  cout << gcd(argv[2],argv[3]) << endl;
 
   return 0;
 }
