@@ -1,6 +1,38 @@
 #include <iostream>
 using namespace std;
-int binary_search(string *A[], int key, int imin, int imax);
+int binary_search(string *A[], string key, int imin, int imax);
+int midpoint(int imin, int imax);
+
+int KEY_NOT_FOUND = -1;
+
+int midpoint(int imin, int imax) {
+    return (imin + imax) / 2;
+}
+
+int binary_search(string *A[], string key, int imin, int imax)
+{
+  // test if array is empty
+  if (imax < imin) {
+    // set is empty, so return value showing not found
+    return KEY_NOT_FOUND;
+  } else {
+      // calculate midpoint to cut set in half
+      int imid = midpoint(imin, imax);
+ 
+      // three-way comparison
+      if (*(A[imid]) > key)
+        // key is in lower subset
+        return binary_search(A, key, imin, imid-1);
+      else if (*(A[imid]) < key)
+        // key is in upper subset
+        return binary_search(A, key, imid+1, imax);
+      else
+        // key has been found
+        return imid;
+    }
+}
+
+
 int main()
 {
     string sarray[] = {
@@ -59,7 +91,7 @@ int main()
       cout << *(sparray[i]) << endl;
       }
    // now, uncomment to binary search for "BASIC"
-   // int idx = binary_search(sparray, "BASIC", 0, 31);
-   // cout << "First index of BASIC is :" << idx << endl;
+   int idx = binary_search(sparray, "BASIC", 0, 31);
+   cout << "First index of BASIC is :" << idx << endl;
    return 0;
 }
